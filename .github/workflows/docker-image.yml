@@ -70,4 +70,4 @@ jobs:
          kubectl rollout status deployment/my_project
          kubectl create service loadbalancer my_project --tcp=80:$PORT --dry-run -o yaml > service.yaml
          kubectl apply -f service.yaml
-         kubectl get services -o wide 
+         kubectl get services -o wide
