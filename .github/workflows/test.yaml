@@ -55,4 +55,4 @@ jobs:
         run: |
           oci setup repair-file-permissions --file /home/runner/.oci/config
           oci setup repair-file-permissions --file /home/runner/.oci/key.pem
-      - name: 'Download the KUBECONFIG'
+
