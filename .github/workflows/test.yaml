@@ -59,4 +59,4 @@ jobs:
         run: |
          mkdir -p ~/.kube
          oci ce cluster create-kubeconfig --cluster-id ${{ secrets.OKE_OCID }} --file ~/.kube/config --region ${{secrets.OCI_REGION}} --token-version 2.0.0
-         export KUBECONFIG=$KUBECONFIG:$HOME/.kube/config
+          echo "${{secrets.KUBE_CONFIG}}" > ~/.oci/config
