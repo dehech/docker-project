@@ -63,11 +63,41 @@ jobs:
          export KUBECONFIG=~/.kube/config
 
       - name: 'Deploy the API on OKE'
-        run: |
+        run: | 
          kubectl delete deployment my_project
-         kubectl create deployment my_project --image=fdehech/my_project:main --dry-run -o yaml > deployment.yaml
          kubectl apply -f deployment.yaml
          kubectl rollout status deployment/my_project
-         kubectl create service loadbalancer my_project --tcp=80:$PORT --dry-run -o yaml > service.yaml
-         kubectl apply -f service.yaml
          kubectl get services -o wide
+         apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2 
+kind: Deployment 
+metadata: 
+  name: my_project 
+spec: 
+  selector: 
+    matchLabels: 
+      app: my_project 
+  replicas: 3 # tells deployment to run 2 pods matching the template 
+  template:
+    metadata: 
+      labels: 
+        app: my_project 
+    spec: 
+      containers: 
+      - name: my_project 
+        image: fdehech/my_project:main
+        ports: 
+        - containerPort: 80 
+--- 
+# https://kubernetes.io/docs/concepts/services-networking/service/#defining-a-service  
+kind: Service 
+apiVersion: v1 
+metadata: 
+  name: my_project 
+spec: 
+  selector: 
+    app: my_project 
+  ports: 
+  - protocol: TCP 
+    port: 80 
+    targetPort: 80 
+  type: LoadBalancer 
