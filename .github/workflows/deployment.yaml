@@ -1,19 +1,19 @@
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2 
 kind: Deployment 
 metadata: 
-  name: web_serv-deployment 
+  name: my_project 
 spec: 
   selector: 
     matchLabels: 
-      app: web_serv 
+      app: my_project 
   replicas: 3 # tells deployment to run 2 pods matching the template 
   template:
     metadata: 
       labels: 
-        app: web_serv 
+        app: my_project 
     spec: 
       containers: 
-      - name: web_serv 
+      - name: my_project 
         image: fdehech/my_project:main
         ports: 
         - containerPort: 80 
@@ -22,10 +22,10 @@ spec:
 kind: Service 
 apiVersion: v1 
 metadata: 
-  name: web_serv-service 
+  name: my_project 
 spec: 
   selector: 
-    app: web_serv 
+    app: my_project 
   ports: 
   - protocol: TCP 
     port: 80 
