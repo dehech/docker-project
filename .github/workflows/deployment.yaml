@@ -1,19 +1,33 @@
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2 
 kind: Deployment 
 metadata: 
-  name: My_dep
+  name: my_project 
 spec: 
-   selector: 
-     matchLabels: 
-      app: My_dep 
-replicas: 2
+  selector: 
+    matchLabels: 
+      app: my_project 
+  replicas: 3 # tells deployment to run 2 pods matching the template 
   template:
     metadata: 
       labels: 
-        app: My_dep
+        app: my_project 
     spec: 
       containers: 
-      - name: My_dep
+      - name: my_project 
         image: fdehech/my_project:main
         ports: 
         - containerPort: 80 
+--- 
+# https://kubernetes.io/docs/concepts/services-networking/service/#defining-a-service  
+kind: Service 
+apiVersion: v1 
+metadata: 
+  name: my_project 
+spec: 
+  selector: 
+    app: my_project 
+  ports: 
+  - protocol: TCP 
+    port: 80 
+    targetPort: 80 
+  type: LoadBalancer 
