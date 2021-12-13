@@ -19,15 +19,15 @@ spec:
         - containerPort: 80 
 --- 
 # https://kubernetes.io/docs/concepts/services-networking/service/#defining-a-service  
-kind: Service 
-apiVersion: v1 
-metadata: 
-  name: projet-service
-spec: 
-  selector: 
-    app: projet
-  ports: 
-  - protocol: TCP 
-    port: 80 
-    targetPort: 80 
-  type: LoadBalancer 
+# kind: Service 
+# apiVersion: v1 
+# metadata: 
+#  name: projet-service
+# spec: 
+#  selector: 
+#    app: projet
+#  ports: 
+#  - protocol: TCP 
+#    port: 80 
+#    targetPort: 80 
+#  type: LoadBalancer 
