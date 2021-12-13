@@ -63,8 +63,7 @@ jobs:
          export KUBECONFIG=~/.kube/config
 
       - name: 'Deploy the API on OKE'
-        run: | 
-         kubectl delete deployment nginx-deployment      
+        run: |       
          kubectl create deployment my_project --image=fdehech/my_project:main --dry-run none -o yaml > deployment.yaml 
          kubectl apply -f deployment.yaml
          kubectl rollout status deployment/my_project
