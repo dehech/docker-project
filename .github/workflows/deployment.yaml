@@ -1,19 +1,19 @@
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2 
 kind: Deployment 
 metadata: 
-  name: projet-deployment
+  name: nginx-deployment
 spec: 
   selector: 
     matchLabels: 
-      app: projet
+      app: nginx
   replicas: 3 # tells deployment to run 2 pods matching the template 
   template:
     metadata: 
       labels: 
-        app: projet
+        app: nginx
     spec: 
       containers: 
-      - name: projet
+      - name: nginx
         image: fdehech/my_project:main
         ports: 
         - containerPort: 80 
@@ -22,10 +22,10 @@ spec:
 kind: Service 
 apiVersion: v1 
 metadata: 
-  name: projet
+  name: nginx
 spec: 
   selector: 
-    app: projet 
+    app: nginx 
   ports: 
   - protocol: TCP 
     port: 80 
