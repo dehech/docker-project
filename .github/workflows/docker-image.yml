@@ -65,6 +65,5 @@ jobs:
       - name: 'Deploy the API on OKE'
         run: |   
          kubectl create -f .github/workflows/deployment.yaml
-         kubectl rollout status deployment/my_dep
-         kubectl create -f .github/workflows/service.yaml
+         kubectl rollout status deployment/My_dep
          kubectl get services -o wide
