@@ -1,19 +1,19 @@
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2 
 kind: Deployment 
 metadata: 
-  name: my_dep
+  name: My_dep
 spec: 
-  selector: 
-    matchLabels: 
-      app: my_dep 
-  replicas: 2 # tells deployment to run 2 pods matching the template 
+   selector: 
+     matchLabels: 
+      app: My_dep 
+replicas: 2
   template:
     metadata: 
       labels: 
-        app: my_dep
+        app: My_dep
     spec: 
       containers: 
-      - name: my_dep
+      - name: My_dep
         image: fdehech/my_project:main
         ports: 
         - containerPort: 80 
