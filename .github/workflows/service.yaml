@@ -1,12 +1,12 @@
-kind: Service 
-apiVersion: v1 
-metadata: 
-  name: my_dep
-spec: 
-  selector: 
-    app: my_dep 
+  kind: Service 
+  apiVersion: v1 
+  metadata: 
+    name: My_dep
+  spec: 
+    selector: 
+    app: My_dep 
   ports: 
-  - protocol: TCP 
-    port: 80 
-    targetPort: 80 
-  type: LoadBalancer 
+   - protocol: TCP 
+     port: 80 
+     targetPort: 80 
+   type: LoadBalancer 
