@@ -65,6 +65,7 @@ jobs:
       - name: 'Deploy the API on OKE'
         run: |
          kubectl delete deployment nginx-deployment
+         kubectl delete deployment nginx
          kubectl create -f .github/workflows/deployment.yaml
          kubectl rollout status deployment/nginx-deployment 
          kubectl get services -o wide
