@@ -14,7 +14,7 @@ spec:
     spec: 
       containers: 
       - name: projet
-        image: fdehech/my_project:my_project
+        image: fdehech/my_project:main
         ports: 
         - containerPort: 80 
 --- 
